@@ -11,6 +11,14 @@ Communicator::~Communicator()
     std::cout << __FUNCTION__ << " Deleted\n";
 }
 
+Communicator& Communicator::getInstance()
+{
+    static Communicator Instance;
+    return Instance;
+}
+
+// Singleton with pointer
+/*
 Communicator* Communicator::getInstance()
 {
     if(Instance == nullptr)
@@ -25,3 +33,4 @@ void Communicator::resetInstance()
     delete Instance;
     Instance = nullptr;
 }
+*/

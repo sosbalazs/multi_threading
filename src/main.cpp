@@ -5,7 +5,8 @@
 
 static bool ThreadStopped = false;
 
-Communicator* Communicator::Instance = nullptr;
+// Singleton with pointer 
+// Communicator* Communicator::Instance = nullptr;
 
 void otherThread()
 {
@@ -16,7 +17,7 @@ void otherThread()
     std::cin >> message;
     if(message == "Buksi")
     {
-      Communicator::getInstance()->setMessageArrived();
+      Communicator::getInstance().setMessageArrived();
     }
     else if (message == "q")
     {
@@ -34,16 +35,17 @@ int main()
   while(!ThreadStopped)
   {
     std::this_thread::sleep_for(1s);
-    if(Communicator::getInstance()->isMessageArrived())
+    if(Communicator::getInstance().isMessageArrived())
     {
       std::cout << "New message has arrived!\n";
-      Communicator::getInstance()->deleteMessage();
+      Communicator::getInstance().deleteMessage();
     }
   }
 
 
   ThreadStopped = true;
   myThread.join();
-  Communicator::getInstance()->resetInstance();
+  // Singleton with pointer 
+  // Communicator::getInstance()->resetInstance();
   
 }

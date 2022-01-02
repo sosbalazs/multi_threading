@@ -5,8 +5,13 @@ class Communicator
         Communicator(const Communicator&) = delete;
         void operator=(const Communicator&) = delete;
 
+        static Communicator& getInstance();
+
+        // Singleton with pointer 
+        /*
         static Communicator* getInstance();
         static void resetInstance();
+        */
 
         void setMessageArrived()
         {
@@ -27,7 +32,8 @@ class Communicator
 
     private:
         Communicator();
-        static Communicator* Instance;
+        // Singleton with pointer 
+        //static Communicator* Instance;
         bool MessageArrived = false;
 };
 
